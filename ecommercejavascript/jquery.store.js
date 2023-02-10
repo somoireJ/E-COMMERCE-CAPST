@@ -1,6 +1,9 @@
+//The init() method handles the initialization of the shop plugin. It needs to be called when the shop plugin is being used. This method can take any necessary arguments, such as the shopping cart data or product information. It should also set up any necessary data structures, such as the shopping cart and product list. After the initialization is done, the init() method should call the displayCart() and displayProducts() methods.
+//The displayProducts() method handles the display of the products. It takes the product data as an argument and then builds a HTML representation of the products. This method should also add any necessary event listeners to the products, such as an "add to cart" button.
+
 (function($) {
   $.Shop = function(element) {
-    this.$element = $(element);
+    this.$element = $(element);//$ refers to an HTML element object and i will use  in several instances in my code .
     this.init();
   };
 
@@ -46,6 +49,7 @@
         }
 
       };
+      /*  from line 40 defining an object called "requiredFields" which has two key-value pairs. The first key is "expression" and its value is a regular expression checking that a given string is a valid email address. The second key is "str" and its value is an empty string. This object could be used to validate user input on a form */
 
       // Method invocation
 
@@ -77,6 +81,7 @@
         this.storage.setItem(this.total, "0");
       }
     },
+    /*from line setting up a shopping cart using the local storage API. It sets the cart name, shipping rates and total in the local storage. The cart is stored as a JSON string. The setItem method of the storage object is used to store the cart name, shipping rates and total in the local storage. */
 
     // Appends the required hidden values to the PayPal's form before submitting
 
@@ -88,7 +93,7 @@
         var shipping = self.storage.getItem(self.shippingRates);
         var numShipping = self._convertString(shipping);
         var cartItems = cart.items;
-        var singShipping = Math.floor(numShipping / cartItems.length);
+        var singShipping = Math.floor(numShipping / cartItems.length);//used floor to round to nearest whole number
 
         $form.attr("action", self.paypalURL);
         $form.find("input[name='business']").val(self.paypalBusinessEmail);
@@ -232,7 +237,9 @@
         });
       }
     },
+/*from line 194 event listener for a click on the product delete link. When the link is clicked, the event is prevented from propagating, and the product name is stored in a productName variable. The items are then looped through, and if the product name is equal to the stored productName variable, it is removed from the items array.*/
 
+    
     // Displays the shopping cart
 
     displayCart: function() {
@@ -459,11 +466,11 @@
     _convertString: function(numStr) {
       var num;
       if (/^[-+]?[0-9]+\.[0-9]+$/.test(numStr)) {
-        num = parseFloat(numStr);
+        num = parseFloat(numStr);//built-in JS function that parses a string and returns a floating point no.
       } else if (/^\d+$/.test(numStr)) {
         num = parseInt(numStr, 10);
       } else {
-        num = Number(numStr);
+        num = Number(numStr);// checks to see if numStr is neither a float or an integer and, if true, assigns the parsed number value to the variable num.
       }
 
       if (!isNaN(num)) {
@@ -568,7 +575,7 @@
 
         $(this).find(":input").each(function() {
           var $input = $(this);
-          var type = $input.data("type");
+          var type = $input.data("type");// $input refers to an HTML element object.
           var msg = $input.data("message");
 
           if (type == "string") {
