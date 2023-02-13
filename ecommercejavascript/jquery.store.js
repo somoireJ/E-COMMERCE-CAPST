@@ -1,6 +1,8 @@
 //The init() method handles the initialization of the shop plugin. It needs to be called when the shop plugin is being used. This method can take any necessary arguments, such as the shopping cart data or product information. It should also set up any necessary data structures, such as the shopping cart and product list. After the initialization is done, the init() method should call the displayCart() and displayProducts() methods.
 //The displayProducts() method handles the display of the products. It takes the product data as an argument and then builds a HTML representation of the products. This method should also add any necessary event listeners to the products, such as an "add to cart" button.
 
+
+
 (function($) {
   $.Shop = function(element) {
     this.$element = $(element);//$ refers to an HTML element object and i will use  in several instances in my code .
@@ -237,9 +239,9 @@
         });
       }
     },
-/*from line 194 event listener for a click on the product delete link. When the link is clicked, the event is prevented from propagating, and the product name is stored in a productName variable. The items are then looped through, and if the product name is equal to the stored productName variable, it is removed from the items array.*/
+    /*from line 194 event listener for a click on the product delete link. When the link is clicked, the event is prevented from propagating, and the product name is stored in a productName variable. The items are then looped through, and if the product name is equal to the stored productName variable, it is removed from the items array.*/
 
-    
+
     // Displays the shopping cart
 
     displayCart: function() {
